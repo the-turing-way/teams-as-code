@@ -1,0 +1,58 @@
+name: Plan and apply changes to GitHub Teams Membership
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - teams.yaml
+      - tf-config/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/plan-and-apply.yaml
+      - teams.yaml
+      - tf-config/**
+
+env:
+  TOFU_VERSION: 1.11.4
+
+jobs:
+  plan-apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Authenticate against GCP project with Service Account
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: "supple-tracker-380219"
+          credentials_json: "${{ secrets.GCP_SA_CREDS }}"
+
+      - name: Install opentofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: ${{ env.TOFU_VERSION }}
+
+      - name: Initialise opentofu
+        working-directory: tf-config
+        run: tofu init
+
+      - name: Select opentofu workspace
+        working-directory: tf-config
+        run: tofu workspace select -or-create turing-way
+
+      - name: Run plan
+        working-directory: tf-config
+        run: tofu plan
+        env:
+          TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
+
+      - name: Run apply
+        if: github.event_name != 'pull_request'
+        working-directory: tf-config
+        run: tofu apply -auto-approve
+        env:
+          TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
