@@ -1,0 +1,53 @@
+name: Validate config files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      - name: Install script dependencies
+        run: |
+          python -m pip install -U pip
+          python -m pip install jsonschema ruamel.yaml typer
+
+      - name: Run script to validate teams.yaml against schema
+        run: |
+          python scripts/validate-yaml.py teams.yaml teams.schema.yaml
+
+  tofu-lint-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup tflint
+        uses: terraform-linters/setup-tflint@v6
+
+      - name: Run tofu fmt
+        uses: dflook/tofu-fmt@v2
+        with:
+          path: tf-config
+
+      - name: Run tflint
+        run: tflint --fix
+
+      - name: Add and Commit any changes made
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "Run tofu fmt and lint"

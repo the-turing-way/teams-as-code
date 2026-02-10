@@ -1,0 +1,47 @@
+
+$schema: https://json-schema.org/draft/2020-12/schema
+type: array
+additionalProperties: false
+required:
+  - members
+  - name
+  - permissions
+properties:
+  name:
+    type: string
+    description: The name/slug of the GitHub team
+  description:
+    type: string
+    description: A short description of the GitHub team
+  members:
+    type: array
+    description: A list of GitHub usernames that should belong to the GitHub team
+    items:
+      type: string
+  permissions:
+    type: object
+    additionalProperties: false
+    description: |
+      A list of objects describing the repos the GitHub team has permissions on,
+      and what that permission level is
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - repo
+        - role
+      properties:
+        repo:
+          type: string
+          description: The name of a GitHub repo this team should have access to
+        role:
+          type: string
+          description: |
+            The level of access the GitHub team should have on this repo. Should
+            be one of: read, triage, write, maintain, admin.
+          enum:
+            - read
+            - triage
+            - write
+            - maintain
+            - admin
