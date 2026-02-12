@@ -1,6 +1,6 @@
 
 $schema: https://json-schema.org/draft/2020-12/schema
-type: array
+type: object
 additionalProperties: false
 required:
   - members
@@ -19,7 +19,7 @@ properties:
     items:
       type: string
   permissions:
-    type: object
+    type: array
     additionalProperties: false
     description: |
       A list of objects describing the repos the GitHub team has permissions on,
