@@ -1,0 +1,14 @@
+name: Book Dash Planning Committee
+description: Ad hoc team for planning and running a Book Dash event
+members:
+  - AlexandraAAJ
+  - Arielle-Bennett
+  - c-martinez
+  - EKaroune
+  - EstherPlomp
+  - LelleDi
+permissions:
+  - repo: the-turing-way
+    role: write
+  # - repo: teams-as-code
+  #   role: write

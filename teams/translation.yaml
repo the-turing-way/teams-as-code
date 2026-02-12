@@ -1,0 +1,12 @@
+name: Translation
+description: The Turing Way translation team
+members:
+  - BatoolMM
+  - melibleq
+permissions:
+  - repo: images
+    role: write
+  - repo: the-turing-way
+    role: write
+  # - repo: teams-as-code
+  #   role: write

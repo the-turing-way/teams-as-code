@@ -1,0 +1,28 @@
+name: Community Management Working Group
+description: |
+  Throughout 2025, we are organising a working group for Community Management
+  in order to support community work in The Turing Way
+members:
+  - cecibaldoni
+  - LelleDi
+  - likeajumprope
+  - nehamoopen
+  - Preshh0
+  - SaraVilla
+permissions:
+  - repo: .github
+    role: maintain
+  - repo: communications
+    role: maintain
+  - repo: community-management
+    role: admin
+  - repo: fireside-chats
+    role: maintain
+  - repo: images
+    role: write
+  - repo: newsletter
+    role: maintain
+  - repo: the-turing-way
+    role: write
+  # - repo: teams-as-code
+  #   role: write
