@@ -3,7 +3,7 @@ resource "github_team" "teams" {
 
   name        = each.value.name
   description = each.value.description
-  privacy     = "closed"
+  privacy     = lookup(each.value, "privacy", "closed")
 }
 
 resource "github_team_repository" "team_repos" {
