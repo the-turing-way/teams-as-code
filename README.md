@@ -20,6 +20,7 @@ has on given repos. The format looks like this:
       role: write
     - repo: repo2
       role: read
+  privacy: closed  # Optional. Can be "secret" or "closed". Defaults to "closed".
 ```
 
 > [!WARNING]
@@ -29,6 +30,25 @@ has on given repos. The format looks like this:
 Once you have made your edits, open a Pull Request and the worflows will trigger
 to validate them and run a plan of the changes.
 *The changes will only be applied after the Pull Request is merged.*
+
+### Self-Managing your Team
+
+There are two pieces to include that will allow your team to self-manage through
+this repository.
+
+Firstly, in the [`teams.yaml`](./teams.yaml) file in your team's permissions
+section, ensure you have included this repository with the `write` role.
+
+```yaml
+- repo: teams-as-code
+  role: write
+```
+
+Then in the [`CODEOWNERS`](./CODEOWNERS) file, add your team to the line that
+begins with `teams.yaml` in the format `@the-turing-way/<team-name>`.
+
+These will request your team to review Pull Requests against the `teams.yaml` file
+and allow that team's members to merge themselves, providing that tests pass.
 
 ## How does this repo work? (More detail.)
 

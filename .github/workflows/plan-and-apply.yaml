@@ -10,16 +10,16 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - .github/workflows/plan-and-apply.yaml
-      - teams.yaml
-      - tf-config/**
 
 env:
   TOFU_VERSION: 1.11.4
 
 jobs:
   plan-apply:
+    # Provide GITHUB_TOKEN enough permissions to post a comment to a PR
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -46,13 +46,23 @@ jobs:
 
       - name: Run plan
         working-directory: tf-config
-        run: tofu plan
+        run: tofu plan -out .planfile
         env:
           TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
+
+      - name: Post plan as PR comment
+        uses: borchero/terraform-plan-comment@v2
+        with:
+          expand-comment: true  # Ensures the comment is unfolded for review
+          planfile: .planfile
+          skip-empty: true  # Don't post a comment when the plan has no changes
+          terraform-cmd: tofu
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          working-directory: tf-config
 
       - name: Run apply
         if: github.event_name != 'pull_request'
         working-directory: tf-config
-        run: tofu apply -auto-approve
+        run: tofu apply .planfile -auto-approve
         env:
           TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
