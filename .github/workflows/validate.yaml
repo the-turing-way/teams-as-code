@@ -6,8 +6,46 @@ on:
       - main
 
 jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      team-matrix: ${{ steps.generate-matrix.outputs.teams-matrix }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - id: generate-matrix
+        shell: bash
+        run: |
+          # Initialize the list
+          list="["
+
+          # Loop over all .yaml files in ./teams
+          first=true
+          for file in ./teams/*.yaml; do
+              # Extract filename without path and .yaml extension
+              filename=$(basename "$file" .yaml)
+              
+              # Add comma separator for all but the first item
+              if [ "$first" = true ]; then
+                  list="${list}{\"team\": \"$filename\"}"
+                  first=false
+              else
+                  list="${list}, {\"team\": \"$filename\"}"
+              fi
+          done
+
+          # Close the list
+          list="${list}]"
+
+          # Output the result
+          echo "teams-matrix=${list}" >> "$GITHUB_OUTPUT"
+
   validate-yaml:
     runs-on: ubuntu-latest
+    needs: generate-matrix
+    strategy:
+      matrix:
+        include: "${{ fromJSON(needs.generate-matrix.outputs.team-matrix) }}"
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
@@ -24,7 +62,7 @@ jobs:
 
       - name: Run script to validate teams.yaml against schema
         run: |
-          python scripts/validate-yaml.py teams.yaml teams.schema.yaml
+          python scripts/validate-yaml.py teams/${{ matrix.team }}.yaml teams.schema.yaml
 
   tofu-lint-fmt:
     runs-on: ubuntu-latest
