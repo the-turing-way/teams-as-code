@@ -42,6 +42,7 @@ jobs:
 
       - name: Run tflint
         run: tflint --fix
+        working-directory: tf-config
 
       - name: Add and Commit any changes made
         uses: EndBug/add-and-commit@v9
