@@ -1,0 +1,12 @@
+name: Jupyter Book workshop
+description: ''
+members:
+  - agoose77
+  - Arielle-Bennett
+  - JimMadge
+  - KirstieJane
+permissions:
+  - repo: Build-a-Jupyter-Book-with-The-Turing-Way
+    role: maintain
+  # - repo: teams-as-code
+  #   role: write

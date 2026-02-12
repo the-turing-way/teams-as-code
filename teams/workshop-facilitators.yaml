@@ -1,0 +1,10 @@
+name: Workshop Facilitators
+description: Running and managing workshop events as part of The Turing Way
+members:
+  - cassgvp
+  - EKaroune
+permissions:
+  - repo: workshops
+    role: write
+  # - repo: teams-as-code
+  #   role: write
