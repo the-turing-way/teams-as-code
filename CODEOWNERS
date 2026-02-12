@@ -1,0 +1,12 @@
+# github actions workflows
+.github/ @the-turing-way/infrastructure-working-group
+# scripts
+scripts/ @the-turing-way/infrastructure-working-group
+# tf config
+tf-config/ @the-turing-way/infrastructure-working-group
+# teams validation schema
+teams.schema.yaml @the-turing-way/infrastructure-working-group
+
+# The teams will be requested to review any Pull Request made
+# against the teams.yaml file.
+teams.yaml @the-turing-way/accessibility-working-group @the-turing-way/all-all-contributors @the-turing-way/book-dash-planning-committee @the-turing-way/book-dash-working-group @the-turing-way/community-management-working-group @the-turing-way/gardeners @the-turing-way/infrastructure-working-group @the-turing-way/jupyter-book-workshop @the-turing-way/jupyterhub-orgmyc @the-turing-way/steering-committee @the-turing-way/translation @the-turing-way/workshop-facilitators
