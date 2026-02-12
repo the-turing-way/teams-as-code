@@ -64,6 +64,18 @@ jobs:
         run: |
           python scripts/validate-yaml.py teams/${{ matrix.team }}.yaml teams.schema.yaml
 
+  check-valid-yaml:
+    runs-on: ubuntu-latest
+    needs: validate-yaml
+    if: always()
+    steps:
+      - name: All yaml checks ok
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Some yaml checks failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+
   tofu-lint-fmt:
     runs-on: ubuntu-latest
     steps:
