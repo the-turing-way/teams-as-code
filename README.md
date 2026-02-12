@@ -20,6 +20,7 @@ has on given repos. The format looks like this:
       role: write
     - repo: repo2
       role: read
+  privacy: closed  # Optional. Can be "secret" or "closed". Defaults to "closed".
 ```
 
 > [!WARNING]
