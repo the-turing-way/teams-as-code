@@ -45,3 +45,10 @@ properties:
             - write
             - maintain
             - admin
+  privacy:
+    type: string
+    description: |
+      The privacy of the team. Can be "secret" or "closed". Defaults to "closed".
+    enum:
+      - closed
+      - secret
