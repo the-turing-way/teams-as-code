@@ -21,7 +21,7 @@ locals {
       for member in lookup(team, "members", []) : {
         team_name = team.name
         user_map  = member
-        key       = "${team.name}-${user_map.user}"
+        key       = "${team.name}-${member.user}"
       }
     ]
   ])
