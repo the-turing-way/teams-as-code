@@ -1,10 +1,13 @@
 name: gardeners
 description: The gardeners team works to cultivate and maintain our repositories.
 members:
-  - Arielle-Bennett
-  - JimMadge
-  - LelleDi
-  - SaraVilla
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: JimMadge
+    maintainer: true
+  - user: LelleDi
+    maintainer: true
+  - user: SaraVilla
 permissions:
   - repo: the-turing-way
     role: triage

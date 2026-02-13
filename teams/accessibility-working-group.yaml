@@ -1,7 +1,8 @@
 name: accessibility-working-group
 description: The Turing Way accessibility working group
 members:
-  - LizHareDogs
+  - user: LizHareDogs
+    maintainer: true
 permissions:
   - repo: accessibility-working-group
     role: maintain

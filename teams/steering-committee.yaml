@@ -1,16 +1,21 @@
 name: steering-committee
 description: Members of the Steering Committee for TTW
 members:
-  - Arielle-Bennett
-  - BatoolMM
-  - EKaroune
-  - JimMadge
-  - KirstieJane
-  - LelleDi
-  - LizHareDogs
-  - malvikasharan
-  - Preshh0
-  - SaraVilla
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: BatoolMM
+  - user: EKaroune
+  - user: JimMadge
+    maintainer: true
+  - user: KirstieJane
+    maintainer: true
+  - user: LelleDi
+    maintainer: true
+  - user: LizHareDogs
+  - user: malvikasharan
+    maintainer: true
+  - user: Preshh0
+  - user: SaraVilla
 permissions:
   - repo: .github
     role: maintain

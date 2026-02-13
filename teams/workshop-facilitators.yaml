@@ -1,8 +1,10 @@
 name: workshop-facilitators
 description: Running and managing workshop events as part of The Turing Way
 members:
-  - cassgvp
-  - EKaroune
+  - user: cassgvp
+    maintainer: true
+  - user: EKaroune
+    maintainer: true
 permissions:
   - repo: workshops
     role: write

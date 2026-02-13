@@ -1,9 +1,11 @@
 name: all-all-contributors
 description: Team working on the all all contributors tool
 members:
-  - JimMadge
-  - RayStick
-  - sgibson91
+  - user: JimMadge
+    maintainer: true
+  - user: RayStick
+  - user: sgibson91
+    maintainer: true
 permissions:
   - repo: all-all-contributors
     role: maintain

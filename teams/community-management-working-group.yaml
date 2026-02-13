@@ -3,12 +3,13 @@ description: |
   Throughout 2025, we are organising a working group for Community Management
   in order to support community work in The Turing Way
 members:
-  - cecibaldoni
-  - LelleDi
-  - likeajumprope
-  - nehamoopen
-  - Preshh0
-  - SaraVilla
+  - user: cecibaldoni
+  - user: LelleDi
+    maintainer: true
+  - user: likeajumprope
+  - user: nehamoopen
+  - user: Preshh0
+  - user: SaraVilla
 permissions:
   - repo: .github
     role: maintain

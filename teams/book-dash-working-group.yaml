@@ -1,12 +1,14 @@
 name: book-dash-working-group
 description: Organisers for Book Dash working group
 members:
-  - AlexandraAAJ
-  - Arielle-Bennett
-  - c-martinez
-  - EKaroune
-  - EstherPlomp
-  - LelleDi
+  - user: AlexandraAAJ
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: c-martinez
+  - user: EKaroune
+  - user: EstherPlomp
+  - user: LelleDi
+    maintainer: true
 permissions:
   - repo: bookdash
     role: maintain

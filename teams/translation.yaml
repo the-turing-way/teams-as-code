@@ -1,8 +1,10 @@
 name: translation
 description: The Turing Way translation team
 members:
-  - BatoolMM
-  - melibleq
+  - user: BatoolMM
+    maintainer: true
+  - user: melibleq
+    maintainer: true
 permissions:
   - repo: images
     role: write

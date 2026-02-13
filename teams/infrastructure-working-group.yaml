@@ -1,11 +1,13 @@
 name: infrastructure-working-group
 description: The Turing Way infrastructure working group
 members:
-  - bsipocz
-  - da5nsy
-  - JimMadge
-  - likeajumprope
-  - sgibson91
+  - user: bsipocz
+  - user: da5nsy
+  - user: JimMadge
+    maintainer: true
+  - user: likeajumprope
+  - user: sgibson91
+    maintainer: true
 permissions:
   - repo: images
     role: maintain

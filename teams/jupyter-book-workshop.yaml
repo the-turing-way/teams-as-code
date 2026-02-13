@@ -1,9 +1,12 @@
 name: jupyter-book-workshop
 members:
-  - agoose77
-  - Arielle-Bennett
-  - JimMadge
-  - KirstieJane
+  - user: agoose77
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: JimMadge
+    maintainer: true
+  - user: KirstieJane
+    maintainer: true
 permissions:
   - repo: Build-a-Jupyter-Book-with-The-Turing-Way
     role: maintain
