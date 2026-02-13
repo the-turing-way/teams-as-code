@@ -21,5 +21,5 @@ resource "github_team_membership" "team_members" {
 
   team_id  = github_team.teams[each.value.team_name].id
   username = each.value.user_map.user
-  role     = contains(keys(each.value.username), "maintainer") ? "maintainer" : "member"
+  role     = contains(keys(each.value.user_map), "maintainer") ? "maintainer" : "member"
 }
