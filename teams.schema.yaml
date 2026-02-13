@@ -20,7 +20,17 @@ properties:
     type: array
     description: A list of GitHub usernames that should belong to the GitHub team
     items:
-      type: string
+      type: object
+      additionalProperties: false
+      required:
+        - user
+      properties:
+        user:
+          type: string
+          description: The team member's GitHub handle
+        maintainer:
+          type: boolean
+          description: Whether the team member should be a maintainer of the team.
   permissions:
     type: array
     additionalProperties: false

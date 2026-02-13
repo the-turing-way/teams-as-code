@@ -15,8 +15,9 @@ name: new-team
 description: "A short description of the team's purpose"  # Optional
 privacy: closed  # Optional
 members:
-  - username1
-  - username2
+  - user: username1
+    maintainer: true  # This team member will be able to manage the team
+  - user: username2
 permissions:
   - repo: repo1
     role: write
