@@ -36,6 +36,13 @@ jobs:
         with:
           tofu_version: ${{ env.TOFU_VERSION }}
 
+      - name: Generate a token with permission to manage members/teams of the org
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Initialise opentofu
         working-directory: tf-config
         run: tofu init
@@ -48,7 +55,7 @@ jobs:
         working-directory: tf-config
         run: tofu plan -out .planfile
         env:
-          TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
+          TF_VAR_github_token: "${{ steps.generate-token.outputs.token }}"
 
       - name: Post plan as PR comment
         uses: borchero/terraform-plan-comment@v2
@@ -65,4 +72,4 @@ jobs:
         working-directory: tf-config
         run: tofu apply .planfile -auto-approve
         env:
-          TF_VAR_github_token: "${{ secrets.GH_TOKEN }}"
+          TF_VAR_github_token: "${{ steps.generate-token.outputs.token }}"
