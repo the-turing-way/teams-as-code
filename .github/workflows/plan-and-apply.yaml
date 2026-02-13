@@ -14,6 +14,11 @@ on:
 env:
   TOFU_VERSION: 1.11.4
 
+concurrency:
+  # Only run one tf job at a time to avoid conflicts and state lock
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   plan-apply:
     # Provide GITHUB_TOKEN enough permissions to post a comment to a PR
