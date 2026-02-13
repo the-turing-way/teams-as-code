@@ -2,7 +2,7 @@ resource "github_team" "teams" {
   for_each = local.teams_map
 
   name        = each.value.name
-  description = each.value.description
+  description = lookup(each.value, "description", null)
   privacy     = lookup(each.value, "privacy", "closed")
 }
 
