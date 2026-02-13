@@ -9,7 +9,10 @@ required:
 properties:
   name:
     type: string
-    description: The name/slug of the GitHub team
+    description: | 
+      The name/slug of the GitHub team. Must contain only lowercase letters,
+      numbers, and hyphens.
+    pattern: "^[a-z0-9\\-]+$"
   description:
     type: string
     description: A short description of the GitHub team
