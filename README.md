@@ -13,7 +13,7 @@ within the file. The format looks like this:
 ```yaml
 name: new-team
 description: "A short description of the team's purpose"  # Optional
-privacy: closed  # Optional. Can be "secret" or "closed". Defaults to "closed".
+privacy: closed  # Optional
 members:
   - username1
   - username2
@@ -25,8 +25,13 @@ permissions:
 ```
 
 > [!WARNING]
-> Note that `role` MUST take a value from: `read`, `triage`, `write`, `maintain`,
-> or `admin`.
+> Note the following requirements:
+>
+> - `name` MUST include only lowercase letters, numbers, or hyphens. For example,
+>   `my-new-team` will succeed, but `My New Téam` will not.
+> - If defining `privacy`, it MUST take a value from `closed` or `secret`.
+> - `role` MUST take a value from: `read`, `triage`, `write`, `maintain`,
+>   or `admin`.
 
 Once you have made your edits, open a Pull Request and the workflows will trigger
 to validate them and run a plan of the changes.
