@@ -78,6 +78,7 @@ jobs:
         with:
           expand-comment: true  # Ensures the comment is unfolded for review
           planfile: .planfile
+          skip-comment: ${{ github.event_name != 'pull_request' }}
           skip-empty: true  # Don't post a comment when the plan has no changes
           terraform-cmd: tofu
           token: "${{ secrets.GITHUB_TOKEN }}"
