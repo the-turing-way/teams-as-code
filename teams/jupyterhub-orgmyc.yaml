@@ -1,0 +1,15 @@
+name: jupyterhub-orgmyc
+description: 'JupyterHub and Organsational Mycology CZI EOSS grant 24-25 '
+privacy: secret
+members:
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: KirstieJane
+    maintainer: true
+  - user: LelleDi
+    maintainer: true
+permissions:
+  - repo: jupyterhub-orgmyc-EOSS
+    role: admin
+  # - repo: teams-as-code
+  #   role: push

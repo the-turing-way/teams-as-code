@@ -1,0 +1,25 @@
+name: infrastructure-working-group
+description: The Turing Way infrastructure working group
+members:
+  - user: bsipocz
+  - user: da5nsy
+  - user: JimMadge
+    maintainer: true
+  - user: likeajumprope
+  - user: sgibson91
+    maintainer: true
+permissions:
+  - repo: images
+    role: maintain
+  - repo: infrastructure-working-group
+    role: maintain
+  - repo: myst-curation
+    role: maintain
+  - repo: mystmd-no-alt-text-plugin
+    role: maintain
+  - repo: pathways
+    role: maintain
+  - repo: the-turing-way
+    role: maintain
+  # - repo: teams-as-code
+  #   role: maintain

@@ -1,0 +1,31 @@
+name: steering-committee
+description: Members of the Steering Committee for TTW
+members:
+  - user: Arielle-Bennett
+    maintainer: true
+  - user: BatoolMM
+  - user: EKaroune
+  - user: JimMadge
+    maintainer: true
+  - user: KirstieJane
+    maintainer: true
+  - user: LelleDi
+    maintainer: true
+  - user: LizHareDogs
+  - user: malvikasharan
+    maintainer: true
+  - user: Preshh0
+  - user: SaraVilla
+permissions:
+  - repo: .github
+    role: maintain
+  - repo: governance
+    role: maintain
+  - repo: images
+    role: maintain
+  - repo: project-management
+    role: maintain
+  - repo: the-turing-way
+    role: maintain
+  # - repo: teams-as-code
+  #   role: push

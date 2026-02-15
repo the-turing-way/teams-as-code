@@ -5,22 +5,28 @@ community.
 
 ## Adding a new team
 
-Adding a new item to the list in the [`teams.yaml`](./teams.yaml) file will create
-a new team. You can also define the members of the team and the permissions it
-has on given repos. The format looks like this:
+Adding a new file to the [`teams`](./teams) folder named `<new-team>.yaml` will
+create a new team once the Pull Request adding the file has been merged. You can
+also define the members of the team and the permissions it has on given repos
+within the file. The format looks like this:
 
 ```yaml
 name: new-team
 description: "A short description of the team's purpose"  # Optional
 privacy: closed  # Optional
 members:
-  - username1
-  - username2
+  - user: username1
+    maintainer: true  # This team member will be able to manage the team
+  - user: username2
 permissions:
   - repo: repo1
-    role: write
+    role: push
   - repo: repo2
-    role: read
+    role: pull
+  - repo: repo3
+    role: maintain
+  - repo: repo4
+    role: triage
 ```
 
 > [!WARNING]
@@ -29,31 +35,47 @@ permissions:
 > - `name` MUST include only lowercase letters, numbers, or hyphens. For example,
 >   `my-new-team` will succeed, but `My New Téam` will not.
 > - If defining `privacy`, it MUST take a value from `closed` or `secret`.
-> - `role` MUST take a value from: `read`, `triage`, `write`, `maintain`,
->   or `admin`.
+> - `role` MUST take a value from: `pull` (equivalent to `read`), `triage`,
+>   `push` (equivalent to `write`), `maintain`, or `admin`.
 
-Once you have made your edits, open a Pull Request and the worflows will trigger
+Once you have made your edits, open a Pull Request and the workflows will trigger
 to validate them and run a plan of the changes.
 *The changes will only be applied after the Pull Request is merged.*
 
-### Self-Managing your Team
+### Self-managing your team
 
 There are two pieces to include that will allow your team to self-manage through
 this repository.
 
-Firstly, in the [`teams.yaml`](./teams.yaml) file in your team's permissions
-section, ensure you have included this repository with the `write` role.
+Firstly, in your team's file under the [`teams`](./teams) folder, under
+`permissions`, ensure you have included this repository with the `push` role.
 
 ```yaml
-- repo: teams-as-code
-  role: write
+permissions:
+  - repo: teams-as-code
+    role: push
 ```
 
-Then in the [`CODEOWNERS`](./CODEOWNERS) file, add your team to the line that
-begins with `teams.yaml` in the format `@the-turing-way/<team-name>`.
+Then in the [`CODEOWNERS`](./CODEOWNERS) file, add your team to the end of the
+list, in the format:
 
-These will request your team to review Pull Requests against the `teams.yaml` file
-and allow that team's members to merge themselves, providing that tests pass.
+```text
+teams/<your-team>.yaml @the-turing-way/<your-team>
+```
+
+> [!WARNING]
+> Note that your team's name will have been changed to lower case, whitespace
+> swapped for hyphens, and any special characters replaced.
+> For example: 'My Téam' will become `my-team`.
+
+Open a Pull Request with these changes. Once merged, this will request your team
+to review future Pull Requests against your team's file and allow that team's
+members to merge themselves, providing that tests pass.
+
+## Deleting a team
+
+Deleting a team is as simple as removing the file from the [`teams`](./teams)
+folder and opening/merging a Pull Request.
 
 ## How does this repo work? (More detail.)
 

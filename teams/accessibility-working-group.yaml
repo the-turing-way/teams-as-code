@@ -1,0 +1,14 @@
+name: accessibility-working-group
+description: The Turing Way accessibility working group
+members:
+  - user: LizHareDogs
+    maintainer: true
+permissions:
+  - repo: accessibility-working-group
+    role: maintain
+  - repo: images
+    role: push
+  - repo: the-turing-way
+    role: push
+  # - repo: teams-as-code
+  #   role: push

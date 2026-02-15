@@ -18,5 +18,6 @@ resource "github_team_membership" "team_members" {
   for_each = local.team_membership_map
 
   team_id  = github_team.teams[each.value.team_name].id
-  username = each.value.username
+  username = each.value.user_map.user
+  role     = contains(keys(each.value.user_map), "maintainer") ? "maintainer" : "member"
 }
