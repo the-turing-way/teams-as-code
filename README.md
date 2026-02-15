@@ -20,9 +20,13 @@ members:
   - user: username2
 permissions:
   - repo: repo1
-    role: write
+    role: push
   - repo: repo2
-    role: read
+    role: pull
+  - repo: repo3
+    role: maintain
+  - repo: repo4
+    role: triage
 ```
 
 > [!WARNING]
@@ -31,8 +35,8 @@ permissions:
 > - `name` MUST include only lowercase letters, numbers, or hyphens. For example,
 >   `my-new-team` will succeed, but `My New Téam` will not.
 > - If defining `privacy`, it MUST take a value from `closed` or `secret`.
-> - `role` MUST take a value from: `read`, `triage`, `write`, `maintain`,
->   or `admin`.
+> - `role` MUST take a value from: `pull` (equivalent to `read`), `triage`,
+>   `push` (equivalent to `write`), `maintain`, or `admin`.
 
 Once you have made your edits, open a Pull Request and the workflows will trigger
 to validate them and run a plan of the changes.
@@ -44,12 +48,12 @@ There are two pieces to include that will allow your team to self-manage through
 this repository.
 
 Firstly, in your team's file under the [`teams`](./teams) folder, under
-`permissions`, ensure you have included this repository with the `write` role.
+`permissions`, ensure you have included this repository with the `push` role.
 
 ```yaml
 permissions:
   - repo: teams-as-code
-    role: write
+    role: push
 ```
 
 Then in the [`CODEOWNERS`](./CODEOWNERS) file, add your team to the end of the

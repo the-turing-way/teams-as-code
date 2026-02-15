@@ -20,10 +20,10 @@ permissions:
   - repo: fireside-chats
     role: maintain
   - repo: images
-    role: write
+    role: push
   - repo: newsletter
     role: maintain
   - repo: the-turing-way
-    role: write
+    role: push
   # - repo: teams-as-code
-  #   role: write
+  #   role: push

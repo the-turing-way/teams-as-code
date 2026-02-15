@@ -22,4 +22,4 @@ permissions:
   - repo: the-turing-way
     role: maintain
   # - repo: teams-as-code
-  #   role: write
+  #   role: maintain

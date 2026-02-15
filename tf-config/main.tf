@@ -6,14 +6,12 @@ resource "github_team" "teams" {
   privacy     = lookup(each.value, "privacy", "closed")
 }
 
-resource "github_repository_collaborators" "team_repos" {
+resource "github_team_repository" "team_repos" {
   for_each   = local.team_repo_map
-  repository = each.value.repo
 
-  team {
-    permission = each.value.role
-    team_id    = github_team.teams[each.value.team_name].slug
-  }
+  team_id    = github_team.teams[each.value.team_name].id
+  repository = each.value.repo
+  permission = each.value.role
 }
 
 resource "github_team_membership" "team_members" {

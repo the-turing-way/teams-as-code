@@ -51,11 +51,11 @@ properties:
           type: string
           description: |
             The level of access the GitHub team should have on this repo. Should
-            be one of: read, triage, write, maintain, admin.
+            be one of: pull, triage, push, maintain, admin.
           enum:
-            - read
+            - pull
             - triage
-            - write
+            - push
             - maintain
             - admin
   privacy:

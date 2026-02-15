@@ -10,4 +10,4 @@ permissions:
   - repo: all-all-contributors
     role: maintain
   # - repo: teams-as-code
-  #   role: write
+  #   role: push

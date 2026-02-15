@@ -12,4 +12,4 @@ permissions:
   - repo: jupyterhub-orgmyc-EOSS
     role: admin
   # - repo: teams-as-code
-  #   role: write
+  #   role: push

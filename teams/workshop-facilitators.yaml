@@ -7,6 +7,6 @@ members:
     maintainer: true
 permissions:
   - repo: workshops
-    role: write
+    role: push
   # - repo: teams-as-code
-  #   role: write
+  #   role: push

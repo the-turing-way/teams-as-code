@@ -13,8 +13,8 @@ permissions:
   - repo: bookdash
     role: maintain
   - repo: images
-    role: write
+    role: push
   - repo: the-turing-way
-    role: write
+    role: push
   # - repo: teams-as-code
-  #   role: write
+  #   role: push
