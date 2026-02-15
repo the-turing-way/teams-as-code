@@ -7,7 +7,7 @@ resource "github_team" "teams" {
 }
 
 resource "github_team_repository" "team_repos" {
-  for_each   = local.team_repo_map
+  for_each = local.team_repo_map
 
   team_id    = github_team.teams[each.value.team_name].id
   repository = each.value.repo
