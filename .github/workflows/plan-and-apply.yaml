@@ -46,7 +46,7 @@ jobs:
       - name: List all repos mentioned in teams yaml files
         id: list-repos
         run: |
-          repos=$(yq eval '.permissions[].repo' "$(pwd)"/teams/*.yaml | grep -v '^---$' | sort -u | awk '{printf "\&s\", ", $0}' | sed 's/, $//')
+          repos=$(yq eval '.permissions[].repo' "$(pwd)"/teams/*.yaml | grep -v '^---$' | sort -u | awk '{printf "\"%s\", ", $0}' | sed 's/, $//')
           echo "$repos"
           echo "repo-list=$repos" >> "$GITHUB_OUTPUT"
 
