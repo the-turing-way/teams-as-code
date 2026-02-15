@@ -14,6 +14,7 @@ within the file. The format looks like this:
 name: new-team
 description: "A short description of the team's purpose"  # Optional
 privacy: closed  # Optional
+parent-team: new-team-parent  # Optional
 members:
   - user: username1
     maintainer: true  # This team member will be able to manage the team
@@ -34,6 +35,9 @@ permissions:
 >
 > - `name` MUST include only lowercase letters, numbers, or hyphens. For example,
 >   `my-new-team` will succeed, but `My New Téam` will not.
+> - GitHub Teams can be [nested](https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams#nested-teams).
+>   If you wish your team to be the child of another, provide the name of that
+>   team here. It MUST include only lowercase letters, numbers, or hyphens.
 > - If defining `privacy`, it MUST take a value from `closed` or `secret`.
 > - `role` MUST take a value from: `pull` (equivalent to `read`), `triage`,
 >   `push` (equivalent to `write`), `maintain`, or `admin`.
