@@ -16,6 +16,12 @@ properties:
   description:
     type: string
     description: A short description of the GitHub team
+  parent-team:
+    type: string
+    description: |
+      The name/slug of the GitHub team that this team should be nested under.
+      Must contain only lowercase letters, numbers, and hyphens.
+    pattern: "^[a-z0-9\\-]+$"
   members:
     type: array
     description: A list of GitHub usernames that should belong to the GitHub team

@@ -1,9 +1,10 @@
 resource "github_team" "teams" {
   for_each = local.teams_map
 
-  name        = each.value.name
-  description = lookup(each.value, "description", null)
-  privacy     = lookup(each.value, "privacy", "closed")
+  name           = each.value.name
+  description    = lookup(each.value, "description", null)
+  privacy        = lookup(each.value, "privacy", "closed")
+  parent_team_id = lookup(each.value, "parent-team", null)
 }
 
 resource "github_team_repository" "team_repos" {
