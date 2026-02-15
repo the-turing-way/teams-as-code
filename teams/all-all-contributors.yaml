@@ -1,0 +1,13 @@
+name: all-all-contributors
+description: Team working on the all all contributors tool
+members:
+  - user: JimMadge
+    maintainer: true
+  - user: RayStick
+  - user: sgibson91
+    maintainer: true
+permissions:
+  - repo: all-all-contributors
+    role: maintain
+  # - repo: teams-as-code
+  #   role: push

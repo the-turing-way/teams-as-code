@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - teams.yaml
+      - teams/**.yaml
       - tf-config/**
   pull_request:
     branches:
@@ -13,6 +13,11 @@ on:
 
 env:
   TOFU_VERSION: 1.11.4
+
+concurrency:
+  # Only run one tf job at a time to avoid conflicts and state lock
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   plan-apply:
@@ -36,12 +41,23 @@ jobs:
         with:
           tofu_version: ${{ env.TOFU_VERSION }}
 
+      # This output will be passed to generate-token step so that the generated
+      # token will have access to all the repos mentioned
+      - name: List all repos mentioned in teams yaml files
+        id: list-repos
+        run: |
+          repos=$(yq eval '.permissions[].repo' "$(pwd)"/teams/*.yaml | grep -v '^---$' | sort -u | awk '{printf "%s,", $0}' | sed 's/, $//')
+          echo "$repos"
+          echo "repo-list=$repos" >> "$GITHUB_OUTPUT"
+
       - name: Generate a token with permission to manage members/teams of the org
         id: generate-token
         uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ steps.list-repos.outputs.repo-list }}
 
       - name: Initialise opentofu
         working-directory: tf-config
@@ -58,10 +74,12 @@ jobs:
           TF_VAR_github_token: "${{ steps.generate-token.outputs.token }}"
 
       - name: Post plan as PR comment
+        if: github.event_name == 'pull_request'
         uses: borchero/terraform-plan-comment@v2
         with:
           expand-comment: true  # Ensures the comment is unfolded for review
           planfile: .planfile
+          skip-comment: ${{ github.event_name != 'pull_request' }}
           skip-empty: true  # Don't post a comment when the plan has no changes
           terraform-cmd: tofu
           token: "${{ secrets.GITHUB_TOKEN }}"
@@ -70,6 +88,6 @@ jobs:
       - name: Run apply
         if: github.event_name != 'pull_request'
         working-directory: tf-config
-        run: tofu apply .planfile -auto-approve
+        run: tofu apply .planfile
         env:
           TF_VAR_github_token: "${{ steps.generate-token.outputs.token }}"
