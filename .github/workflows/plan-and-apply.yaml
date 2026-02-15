@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - teams.yaml
+      - teams/**.yaml
       - tf-config/**
   pull_request:
     branches:
