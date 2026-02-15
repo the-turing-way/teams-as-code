@@ -1,8 +1,0 @@
-name: test
-parent-team: infrastructure-working-group
-members:
-  - user: sgibson91
-    maintainer: true
-permissions:
-  - repo: the-turing-way
-    role: push
