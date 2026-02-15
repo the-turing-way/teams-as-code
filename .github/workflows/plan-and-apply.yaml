@@ -41,12 +41,23 @@ jobs:
         with:
           tofu_version: ${{ env.TOFU_VERSION }}
 
+      # This output will be passed to generate-token step so that the generated
+      # token will have access to all the repos mentioned
+      - name: List all repos mentioned in teams yaml files
+        id: list-repos
+        run: |
+          repos=$(yq eval '.permissions[].repo' "$(pwd)"/teams/*.yaml | grep -v '^---$' | sort -u | awk '{printf "%s,", $0}' | sed 's/, $//')
+          echo "$repos"
+          echo "repo-list=$repos" >> "$GITHUB_OUTPUT"
+
       - name: Generate a token with permission to manage members/teams of the org
         id: generate-token
         uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ steps.list-repos.outputs.repo-list }}
 
       - name: Initialise opentofu
         working-directory: tf-config
