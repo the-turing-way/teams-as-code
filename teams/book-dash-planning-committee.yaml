@@ -12,5 +12,5 @@ members:
 permissions:
   - repo: the-turing-way
     role: push
-  # - repo: teams-as-code
-  #   role: push
+  - repo: teams-as-code
+    role: push
