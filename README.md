@@ -89,8 +89,8 @@ state of the GitHub Teams, their membership, and repo permissions in
 This helps us know exactly who has what permissions where, and easily manage that.
 
 The state of the teams, membership, and permissions we wish to declare are
-stored in the [`teams.yaml`](./teams.yaml) file, so that making changes to this
-file via Pull Requests are applied by opentofu through the
+stored in the YAML files in the [`teams` folder](./teams) file, so that making
+changes to these files via Pull Requests are applied by opentofu through the
 [`plan-and-apply.yaml`](.github/workflows/plan-and-apply.yaml) workflow.
 
 The state is backed up into an object storage bucket currently hosted in GCP;
