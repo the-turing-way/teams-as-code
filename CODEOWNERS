@@ -1,14 +1,7 @@
-# github actions workflows
-.github/ @the-turing-way/infrastructure-working-group
-# scripts
-scripts/ @the-turing-way/infrastructure-working-group
-# tf config
-tf-config/ @the-turing-way/infrastructure-working-group
-# teams validation schema
-teams.schema.yaml @the-turing-way/infrastructure-working-group
+# "Super teams" that can approve any change
+* @the-turing-way/steering-committee @the-turing-way/infrastructure-working-group
 
-# The teams will be requested to review any Pull Request made
-# against the teams.yaml file.
+# These teams will be requested to review any Pull Request made against their teams.yaml file
 teams/accessibility-working-group.yaml        @the-turing-way/accessibility-working-group
 teams/all-all-contributors.yaml               @the-turing-way/all-all-contributors
 teams/book-dash-planning-committee.yaml       @the-turing-way/book-dash-working-group
