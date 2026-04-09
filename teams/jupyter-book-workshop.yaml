@@ -7,6 +7,7 @@ members:
     maintainer: true
   - user: KirstieJane
     maintainer: true
+  - user: sgibson91
 permissions:
   - repo: Build-a-Jupyter-Book-with-The-Turing-Way
     role: maintain
