@@ -1,10 +1,12 @@
 name: steering-committee
 description: Members of the Steering Committee for TTW
 members:
+  - user: AlexandraAAJ
   - user: Arielle-Bennett
     maintainer: true
   - user: BatoolMM
   - user: EKaroune
+  - user: EstherPlomp
   - user: JimMadge
     maintainer: true
   - user: KirstieJane
@@ -14,6 +16,7 @@ members:
   - user: LizHareDogs
   - user: malvikasharan
     maintainer: true
+  - user: OscarSeip
   - user: Preshh0
   - user: SaraVilla
 permissions:
