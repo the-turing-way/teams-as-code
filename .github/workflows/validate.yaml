@@ -87,7 +87,7 @@ jobs:
         uses: terraform-linters/setup-tflint@v6
 
       - name: Run tofu fmt
-        uses: dflook/tofu-fmt@v2
+        uses: dflook/tofu-fmt@v3
         with:
           path: tf-config
 
