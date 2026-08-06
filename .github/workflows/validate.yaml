@@ -11,7 +11,7 @@ jobs:
     outputs:
       team-matrix: ${{ steps.generate-matrix.outputs.teams-matrix }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - id: generate-matrix
         shell: bash
@@ -49,10 +49,10 @@ jobs:
         include: "${{ fromJSON(needs.generate-matrix.outputs.team-matrix) }}"
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.14'
 
@@ -81,13 +81,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup tflint
         uses: terraform-linters/setup-tflint@v6
 
       - name: Run tofu fmt
-        uses: dflook/tofu-fmt@v2
+        uses: dflook/tofu-fmt@v3
         with:
           path: tf-config
 
