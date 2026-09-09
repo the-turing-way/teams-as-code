@@ -12,6 +12,7 @@ members:
     maintainer: true
   - user: OscarSeip
   - user: Preshh0
+  - user: SaraVilla
 permissions:
   - repo: .github
     role: maintain
